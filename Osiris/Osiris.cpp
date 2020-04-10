@@ -4,6 +4,8 @@
 #include "Interfaces.h"
 #include "Memory.h"
 #include "Netvars.h"
+#include <iostream>
+#include <lmcons.h>
 
 static HMODULE module;
 static WNDPROC originalWndproc;
@@ -17,6 +19,15 @@ static LRESULT WINAPI init(HWND window, UINT msg, WPARAM wParam, LPARAM lParam) 
     memory = std::make_unique<Memory>();
     netvars = std::make_unique<Netvars>();
     hooks = std::make_unique<Hooks>(module);
+    char username[UNLEN + 1];
+    DWORD username_len = UNLEN + 1;
+    GetUserName(username, &username_len);
+    AllocConsole();
+    freopen_s((FILE**)stdin, "CONIN$", "r", (FILE*)stdin);
+    freopen_s((FILE**)stdout, "CONOUT$", "w", (FILE*)stdout);
+    freopen_s((FILE**)stderr, "CONERR$", "w", (FILE*)stderr);
+    std::cout << "[INFO] Initialized succesfully" << "\n";
+    std::cout << "[INFO] Welcome to the [deaglemafia] internal project, " << username << "." << "\n";
 
     return CallWindowProc(originalWndproc, window, msg, wParam, lParam);
 }

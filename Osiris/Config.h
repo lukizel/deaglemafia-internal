@@ -269,6 +269,7 @@ public:
         bool fixTabletSignal{ false };
         float maxAngleDelta{ 255.0f };
         bool fakePrime{ false };
+        bool radyjko{ false };
     } misc;
 
     struct {

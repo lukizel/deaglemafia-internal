@@ -18,6 +18,7 @@
 #include "Hacks/Visuals.h"
 #include "Hooks.h"
 #include "SDK/InputSystem.h"
+#include "BASS/bass.h"
 
 constexpr auto windowFlags = ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize
 | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse;
@@ -54,6 +55,7 @@ GUI::GUI() noexcept
         fonts.segoeui = io.Fonts->AddFontFromFileTTF((path / "segoeui.ttf").string().c_str(), 15.0f, nullptr, ranges);
     }
 }
+
 
 void GUI::render() noexcept
 {
@@ -442,6 +444,7 @@ void GUI::render() noexcept
         ImGui::Checkbox("underground tablet reception (dz)", &config->misc.fixTabletSignal);
         ImGui::SetNextItemWidth(120.0f);
         ImGui::Checkbox("spoof prime", &config->misc.fakePrime);
+        //ImGui::Checkbox("radyjko", &config->misc.radyjko);
         break;
     }
     case 3: {
@@ -512,7 +515,7 @@ void GUI::render() noexcept
             break;
     }
     case 4: {
-        ImGui::Checkbox("this is an 'exploit to crash the game. you should not be able to read this!", 0);
+        ImGui::Checkbox("this is an 'exploit' to crash the game. you should not be able to read this!", 0);
         break;
     }
     case 5: {
@@ -611,7 +614,8 @@ void GUI::render() noexcept
         ImGui::SameLine(0.0, 10.0f);
         ImGui::TextUnformatted("code based on nskinz by namazso - github namazso/nSkinz");
         break;
-    }
+        }
     }
     ImGui::End();
 }
+

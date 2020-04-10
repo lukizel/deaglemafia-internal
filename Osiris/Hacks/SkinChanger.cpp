@@ -236,9 +236,14 @@ static void post_data_update_start(int localHandle) noexcept
     const auto local = interfaces->entityList->getEntityFromHandle(localHandle);
     if (!local)
         return;
-
     const auto local_index = local->index();
-
+    /*if(auto player_resource = *g_player_resource)
+    {
+        player_resource->GetCoins()[local_index] = 890;
+        player_resource->GetMusicKits()[local_index] = 3;
+        player_resource->GetRanks()[local_index] = 1;
+        player_resource->GetWins()[local_index] = 1337;
+    }*/
     if (!local->isAlive())
         return;
 

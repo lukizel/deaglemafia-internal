@@ -367,5 +367,8 @@
     <ClInclude Include="SDK\LocalPlayer.h">
       <Filter>SDK</Filter>
     </ClInclude>
+    <ClInclude Include="BASS\bass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
